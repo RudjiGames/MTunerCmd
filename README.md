@@ -23,6 +23,10 @@ Dependencies can be obtained by cloning the following repositories:
 	git clone https://github.com/milostosic/rbase.git
 	git clone https://github.com/milostosic/rdebug.git
 
+DIA (Debug Interface Access) SDK - **Windows only**
+
+	git clone https://github.com/milostosic/DIA.git
+
 Author
 ======
 
