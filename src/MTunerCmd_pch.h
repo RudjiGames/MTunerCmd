@@ -3,11 +3,11 @@
 /// License: http://www.opensource.org/licenses/BSD-2-Clause               ///
 //--------------------------------------------------------------------------//
 
-#ifndef __RTM_MTUNERCMD_PRECOMPILED_H__
-#define __RTM_MTUNERCMD_PRECOMPILED_H__
+#ifndef RTM_MTUNERCMD_PRECOMPILED_H
+#define RTM_MTUNERCMD_PRECOMPILED_H
 
 #include <rbase/inc/path.h>
 #include <rbase/inc/winchar.h>
 #include <rdebug/inc/rdebug.h>
 
-#endif // __RTM_MTUNERCMD_PRECOMPILED_H__
+#endif // RTM_MTUNERCMD_PRECOMPILED_H
