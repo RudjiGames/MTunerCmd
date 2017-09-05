@@ -17,7 +17,7 @@ void err(const char* _message)
 {
 	rtm::Console::info(g_banner);
 	rtm::Console::error(_message);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 const char* findMTunerExe(const char* _string)
