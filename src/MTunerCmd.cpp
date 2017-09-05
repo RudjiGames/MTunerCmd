@@ -9,56 +9,75 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <shellapi.h>
 
-int main(int argc, const char** /*argv*/)
+static const char* g_banner = "Copyright (c) 2017 by Milos Tosic. All rights reserved.\n";
+
+void err(const char* _message)
 {
-	char* commandLine = rtm::WideToMulti(GetCommandLineW());
+	rtm::Console::info(g_banner);
+	rtm::Console::error(_message);
+	exit(1);
+}
 
-	char cmdLine[32768];
-	char cmdLineUC[32768];
+const char* findMTunerExe(const char* _string)
+{
+	uint32_t len = (uint32_t)strlen(_string);
+	const char*		exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNERCMD_DEBUG");	// handle running from debugger
+	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER ");
+	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER.");
+	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER\t");
+	return exePos;
+}
 
-	// handle running from debugger
-	char* exePos = strstr(commandLine, "MTunerCmd_debug.exe");
+int main(int /*argc*/, const char** /*argv*/)
+{
+	wchar_t** argv;
+	int argc;
 
-	strcpy(cmdLineUC, commandLine);
-	_strupr(cmdLineUC);
+	argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+	if (!argv)
+		err("Could not retrieve command line!");
 
+	wchar_t exePathWide[512];
+	GetModuleFileNameW(NULL, exePathWide, 512); 
+	rtm::WideToMulti exePath(exePathWide);
+
+	rtm::pathRemoveRelative(exePath);
+
+	const char* exePos = findMTunerExe(exePath);
 	if (!exePos)
-	{
-		exePos = strstr(cmdLineUC, "MTUNER ");
-		if (!exePos) exePos = strstr(cmdLineUC, "MTUNER.");
-		if (!exePos) exePos = strstr(cmdLineUC, "MTUNER\t");
-	}
+		err("Could not locate executable!");
 
-	wchar_t exePath[512];
-	GetModuleFileNameW(NULL, exePath, 512);
-
-	strcpy(cmdLine, rtm::WideToMulti(exePath));
-	char* com = strstr(cmdLine, ".com");
-	if (com)
-		strcpy(com, ".exe ");
+	strcpy(const_cast<char*>(exePos), "MTuner.exe");
 
 	if (argc < 2)
 	{
-		rdebug::processRun(cmdLine);
+		// Just run MTuner GUI
+		rdebug::processRun(exePath);
+		LocalFree(argv);
 		return 0;
 	}
 
-	char* argPos = 0;
-	if (exePos)
+	// Forward arguments
+	char commandLine[32768];
+	strcpy(commandLine, exePath);
+
+	for (int i=1; i<argc; ++i)
 	{
-		exePos = &commandLine[exePos - cmdLineUC];
-		argPos = strstr(exePos, " ");
-		if (!argPos)
-			argPos = strstr(exePos, "\t");
+		strcat(commandLine, " ");
+		rtm::WideToMulti argvM(argv[i]);
+		strcat(commandLine, argvM);
 	}
 
-	rtm::pathRemoveRelative(cmdLine);
-	if (argPos)
-		strcat(cmdLine, argPos);
+	char* output = rdebug::processGetOutputOf(commandLine, true);
+	if (output)
+	{
+		rtm::Console::info(output);
+		rdebug::processReleaseOutput(output);
+	}
 
-	char* output = rdebug::processGetOutputOf(cmdLine, true);
-	rdebug::processReleaseOutput(output);
+	LocalFree(argv);
 
 	return 0;
 }
