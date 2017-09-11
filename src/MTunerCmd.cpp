@@ -15,6 +15,7 @@ static const char* g_banner = "Copyright (c) 2017 by Milos Tosic. All rights res
 
 void err(const char* _message)
 {
+	rtm::Console::info(g_banner);
 	rtm::Console::error(_message);
 	exit(EXIT_FAILURE);
 }
@@ -31,8 +32,6 @@ const char* findMTunerExe(const char* _string)
 
 int main(int /*argc*/, const char** /*argv*/)
 {
-	rtm::Console::info(g_banner);
-
 	wchar_t** argv;
 	int argc;
 
