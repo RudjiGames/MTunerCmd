@@ -35,9 +35,12 @@ int main(int /*argc*/, const char** /*argv*/)
 	wchar_t** argv;
 	int argc;
 
-	argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+	const wchar_t* cmdLine = GetCommandLineW();
+
+	argv = CommandLineToArgvW(cmdLine, &argc);
 	if (!argv)
 		err("Could not retrieve command line!");
+
 
 	wchar_t exePathWide[512];
 	GetModuleFileNameW(NULL, exePathWide, 512); 
@@ -61,14 +64,10 @@ int main(int /*argc*/, const char** /*argv*/)
 
 	// Forward arguments
 	char commandLine[32768];
-	strcpy(commandLine, exePath);
-
-	for (int i=1; i<argc; ++i)
-	{
-		strcat(commandLine, " ");
-		rtm::WideToMulti argvM(argv[i]);
-		strcat(commandLine, argvM);
-	}
+	strcpy(commandLine, "\"");
+	strcat(commandLine, exePath);
+	strcat(commandLine, "\" ");
+	strcat(commandLine, rtm::WideToMulti(wcsstr(cmdLine, argv[1])));
 
 	char* output = rdebug::processGetOutputOf(commandLine, true);
 	if (output)
