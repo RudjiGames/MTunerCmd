@@ -46,7 +46,7 @@ int main(int /*argc*/, const char** /*argv*/)
 	GetModuleFileNameW(NULL, exePathWide, 512); 
 	rtm::WideToMulti exePath(exePathWide);
 
-	rtm::pathRemoveRelative(exePath);
+	rtm::pathMakeAbsolute(exePath);
 
 	const char* exePos = findMTunerExe(exePath);
 	if (!exePos)
