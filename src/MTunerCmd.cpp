@@ -72,7 +72,7 @@ int main(int /*argc*/, const char** /*argv*/)
 	char* output = rdebug::processGetOutputOf(commandLine, true);
 	if (output)
 	{
-		rtm::Console::info(output);
+		rtm::Console::print(output);
 		rdebug::processReleaseOutput(output);
 	}
 
