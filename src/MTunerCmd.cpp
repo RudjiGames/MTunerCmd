@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------------//
-/// Copyright (c) 2019 Milos Tosic. All Rights Reserved.                   ///
+/// Copyright (c) 2023 Milos Tosic. All Rights Reserved.                   ///
 /// License: http://www.opensource.org/licenses/BSD-2-Clause               ///
 //--------------------------------------------------------------------------//
 
@@ -11,7 +11,7 @@
 #include <windows.h>
 #include <shellapi.h>
 
-static const char* g_banner = "Copyright (c) 2019 by Milos Tosic. All rights reserved.\n";
+static const char* g_banner = "Copyright (c) 2023 by Milos Tosic. All rights reserved.\n";
 
 void err(const char* _message)
 {
