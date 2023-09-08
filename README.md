@@ -1,29 +1,28 @@
 <img src="https://rudji.com/images/lib/mtunercmd.png"/>
 
-[![Build status](https://ci.appveyor.com/api/projects/status/hfh74k15wqwc7ly2?svg=true)](https://ci.appveyor.com/project/milostosic/MTunerCmd)
-[![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/milostosic/MTunerCmd/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/RudjiGames/MTunerCmd/blob/master/LICENSE)
 
-MTunerCmd is a command line utility to redirect IO from MTuner GUI (Windows quirk).
+MTunerCmd is a command line utility to redirect IO from [MTuner](https://github.com/RudjiGames/MTuner) GUI.
 
 Source Code
 ======
 
 You can get the latest source code by cloning it from github:
 
-      git clone https://github.com/milostosic/MTunerCmd.git 
+      git clone https://github.com/RudjiGames/MTunerCmd.git 
 
 Dependencies
 ======
 
 Dependencies can be obtained by cloning the following repositories:
 
-	git clone https://github.com/milostosic/build.git
-	git clone https://github.com/milostosic/rbase.git
-	git clone https://github.com/milostosic/rdebug.git
+	git clone https://github.com/RudjiGames/build.git
+	git clone https://github.com/RudjiGames/rbase.git
+	git clone https://github.com/RudjiGames/rdebug.git
 
 DIA (Debug Interface Access) SDK - **Windows only**
 
-	git clone https://github.com/milostosic/DIA.git
+	git clone https://github.com/RudjiGames/DIA.git
 
 License (BSD 2-clause)
 ======
