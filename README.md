@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/RudjiGames/MTunerCmd/blob/master/LICENSE)
 
-MTunerCmd is a command line utility to redirect IO from [MTuner](https://github.com/RudjiGames/MTuner) GUI.
+**MTunerCmd** is a command line utility to redirect IO from [**MTuner**](https://github.com/RudjiGames/MTuner) GUI.
 
 Source Code
 ======
