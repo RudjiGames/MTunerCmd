@@ -1,5 +1,4 @@
-MTunerCmd
-======
+<img src="https://rudji.com/images/lib/mtunercmd.png"/>
 
 [![Build status](https://ci.appveyor.com/api/projects/status/hfh74k15wqwc7ly2?svg=true)](https://ci.appveyor.com/project/milostosic/MTunerCmd)
 [![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/milostosic/MTunerCmd/blob/master/LICENSE)
