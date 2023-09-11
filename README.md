@@ -2,27 +2,9 @@
 
 [![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/RudjiGames/MTunerCmd/blob/master/LICENSE)
 
-**MTunerCmd** is a command line utility to redirect IO from [**MTuner**](https://github.com/RudjiGames/MTuner) GUI.
+**MTunerCmd** is a command line utility redirects IO from [**MTuner**](https://github.com/RudjiGames/MTuner) GUI. 
 
-Source Code
-======
-
-You can get the latest source code by cloning it from github:
-
-      git clone https://github.com/RudjiGames/MTunerCmd.git 
-
-Dependencies
-======
-
-Dependencies can be obtained by cloning the following repositories:
-
-	git clone https://github.com/RudjiGames/build.git
-	git clone https://github.com/RudjiGames/rbase.git
-	git clone https://github.com/RudjiGames/rdebug.git
-
-DIA (Debug Interface Access) SDK - **Windows only**
-
-	git clone https://github.com/RudjiGames/DIA.git
+Note: this repository is part of the [**MTuner**](https://github.com/RudjiGames/MTuner) project and is **not** meant to be used/built in a stand alone way.
 
 License (BSD 2-clause)
 ======
