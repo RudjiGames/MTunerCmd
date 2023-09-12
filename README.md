@@ -1,5 +1,6 @@
 <img src="https://rudji.com/images/lib/mtunercmd.png"/>
 
+[![Build status](https://ci.appveyor.com/api/projects/status/k20jmkqfb2cnll2q?svg=true)](https://ci.appveyor.com/project/milostosic/mtunercmd)
 [![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://github.com/RudjiGames/MTunerCmd/blob/master/LICENSE)
 
 **MTunerCmd** is a command line utility redirects IO from [**MTuner**](https://github.com/RudjiGames/MTuner) GUI. 
