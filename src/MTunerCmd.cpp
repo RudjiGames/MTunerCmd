@@ -11,7 +11,7 @@
 #include <windows.h>
 #include <shellapi.h>
 
-static const char* g_banner = "Copyright (c) 2023 by Milos Tosic. All rights reserved.\n";
+static const char* g_banner = "Copyright (c) 2024 by Milos Tosic. All rights reserved.\n";
 
 void err(const char* _message)
 {
