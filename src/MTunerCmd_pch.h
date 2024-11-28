@@ -7,9 +7,9 @@
 #define RTM_MTUNERCMD_PRECOMPILED_H
 
 #include <rbase/inc/path.h>
-#include <rbase/inc/stringfn.h>
 #include <rbase/inc/winchar.h>
 #include <rbase/inc/console.h>
+
 #include <rdebug/inc/rdebug.h>
 
 #endif // RTM_MTUNERCMD_PRECOMPILED_H
