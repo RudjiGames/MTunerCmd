@@ -67,8 +67,8 @@ for:
     install:
       - build\tools\bin\windows\genie.exe --file=MTunerCmd\genie\genie.lua vs2022
 
-    build:
-      project: ../.build/windows/vs2022/MTunerCmd/projects/MTunerCmd.sln
+    build: 
+      project: MTunerCmd\.build\windows\vs2022\MTunerCmd\projects\MTunerCmd.sln
 
 # ======================================
 # Linux
