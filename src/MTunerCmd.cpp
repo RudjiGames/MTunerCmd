@@ -20,10 +20,10 @@ void err(const char* _message)
 const char* findMTunerExe(const char* _string)
 {
 	uint32_t len = (uint32_t)strlen(_string);
-	const char*		exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNERCMD_DEBUG");	// handle running from debugger
-	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER ");
-	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER.");
-	if (!exePos)	exePos = rtm::strStr<rtm::toUpper>(_string, len, "MTUNER\t");
+	const char*		exePos = rtm::strStr<rtm::charToUpper>(_string, len, "MTUNERCMD_DEBUG");	// handle running from debugger
+	if (!exePos)	exePos = rtm::strStr<rtm::charToUpper>(_string, len, "MTUNER ");
+	if (!exePos)	exePos = rtm::strStr<rtm::charToUpper>(_string, len, "MTUNER.");
+	if (!exePos)	exePos = rtm::strStr<rtm::charToUpper>(_string, len, "MTUNER\t");
 	return exePos;
 }
 
