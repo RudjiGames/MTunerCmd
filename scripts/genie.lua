@@ -3,15 +3,24 @@
 -- License: http://www.opensource.org/licenses/BSD-2-Clause
 --
 
-local cp = (function(x) return debug.getinfo(2, "S").source:sub(2):match("(.*[/\\])")  end)()
-while os.isdir(cp) do cp = path.getabsolute(cp .. "/..") local tp = cp .. "/build/build.lua"
-if os.isfile(tp) then dofile (tp) break end end if RTM_ROOT_DIR == nil then
-print("EROR: dependency missing - build. Cannot continue.") os.exit() end
+newoption { trigger = "zidar-path", description = "Path to zidar" }
+
+if not _OPTIONS["zidar-path"] then
+	if os.isfile("../../zidar/zidar.lua") then
+		_OPTIONS["zidar-path"] = "../../zidar"
+	end
+	if os.isfile("../zidar/zidar.lua") then
+		_OPTIONS["zidar-path"] = "../zidar"
+	end
+end
+
+dofile(_OPTIONS["zidar-path"] .. "/zidar.lua")
+dofile "MTunerCmd.lua"
 
 solution "MTunerCmd"
 	setPlatforms()
 
 	startproject "MTunerCmd"
 
-	loadProject( "MTunerCmd" )
+	projectLoad( "MTunerCmd" )
 
