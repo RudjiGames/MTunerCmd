@@ -82,13 +82,26 @@ int main(int /*argc*/, const char** /*argv*/)
 		return 0;
 	}
 
-	// Forward arguments
-	const wchar_t* argsStart = wcsstr(cmdLine, argv[1]);
-	if (!argsStart)
+	// Forward arguments: skip past argv[0] in the RAW command line (honoring quoting
+	// rules) to get the original, still-quoted argument tail. Do NOT wcsstr for
+	// argv[1] - CommandLineToArgvW has already unquoted/unescaped it, so a quoted
+	// path containing spaces would never be found in the raw command line.
+	const wchar_t* argsStart = cmdLine;
+	if (*argsStart == L'"')
 	{
-		LocalFree(argv);
-		err("Could not parse command line arguments!");
+		++argsStart;
+		while (*argsStart && (*argsStart != L'"'))
+			++argsStart;
+		if (*argsStart == L'"')
+			++argsStart;
 	}
+	else
+	{
+		while (*argsStart && (*argsStart != L' ') && (*argsStart != L'\t'))
+			++argsStart;
+	}
+	while ((*argsStart == L' ') || (*argsStart == L'\t'))
+		++argsStart;
 
 	rtm::WideToMulti argsMulti(argsStart);
 
